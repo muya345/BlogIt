@@ -1,11 +1,9 @@
-function Logo ()
-{
-return(
+function Logo() {
+  return (
     <div>
-        <h1>
-            this is the logo
-        </h1>
+      <h1>Blogit</h1>
     </div>
-)}
+  );
+}
 
-export default Logo
+export default Logo;

@@ -1,11 +1,50 @@
-import Navigation from "../Navigation/Navigation";
+import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({ isAuthenticated = false }) {
   return (
-    <div>
-      <h1>Header</h1>
-      <Navigation />
-    </div>
+    <AppBar position="static" elevation={0}>
+      <Toolbar>
+        <Typography 
+          variant="h6" 
+          component="div" 
+          sx={{ flexGrow: 1, fontWeight: 700 }}
+        >
+          <Link to="/" style={{ color: 'inherit', textDecoration: 'none' }}>
+            BlogIt
+          </Link>
+        </Typography>
+        
+        {isAuthenticated ? (
+          <Box>
+            <Button color="inherit" component={Link} to="/write">
+              Write
+            </Button>
+            <Button color="inherit" component={Link} to="/my-blogs">
+              My Blogs
+            </Button>
+            <Button color="inherit" component={Link} to="/profile">
+              Profile
+            </Button>
+          </Box>
+        ) : (
+          <Box>
+            <Button color="inherit" component={Link} to="/login">
+              Login
+            </Button>
+            <Button 
+              variant="contained" 
+              color="secondary" 
+              component={Link} 
+              to="/signup"
+              sx={{ ml: 2 }}
+            >
+              Sign Up
+            </Button>
+          </Box>
+        )}
+      </Toolbar>
+    </AppBar>
   );
 }
 
